@@ -10,7 +10,7 @@ What do we have here? :)
 - We have failure retry : [Utils.RetryTest] implements [org.junit.rules.TestRule]
 
 @Rule
-public RetryTest retry = new RetryTest(3, chromeDriver, logger, capture);
+- public RetryTest retry = new RetryTest(3, chromeDriver, logger, capture);
 
 Above annotation means : All Junit test fail in the Class will be retried for 3 times,
 if there is 1 time the test pass, the assert will be passed. If the test fails for 3 times,
@@ -163,9 +163,9 @@ EP : It's should be fine as the Microsoft has the CDN and Cloud to elastic the s
 
 
 One last thing !
-The test case scripts under : \WWE_LoginTestAuto\src\test\java\com\outlook\test\BPM
-Are only coded for one valid login case and one invalid login case,
-Because of the code amount and time I have.
+- The test case scripts under : \WWE_LoginTestAuto\src\test\java\com\outlook\test\BPM
+- Are only coded for one valid login case and one invalid login case,
+- Because of the code amount and time I have.
 
 
 
