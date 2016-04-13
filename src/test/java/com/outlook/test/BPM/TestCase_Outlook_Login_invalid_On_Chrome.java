@@ -1,7 +1,9 @@
 package com.outlook.test.BPM;
 
-import com.outlook.test.BPM.PageFactory.*;
-import com.outlook.test.BPM.TestParams.*;
+import com.outlook.test.BPM.PageFactory.Outlook_Page_Dashboard;
+import com.outlook.test.BPM.PageFactory.Outlook_Page_Login;
+import com.outlook.test.BPM.TestParams.BaseTest;
+import com.outlook.test.BPM.TestParams.ProjectParams;
 import com.outlook.test.BPM.Utils.*;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
@@ -11,13 +13,12 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 /**
- * Created by Marcus_Chang on 2016/4/13.
+ * Created by Marcus_Chang on 2016/4/14.
  */
-public class TestCase_Outlook_Login_Valid_On_Chrome extends BaseTest {
+public class TestCase_Outlook_Login_invalid_On_Chrome extends BaseTest {
 
     private static WebDriver chromeDriver;
     private static Outlook_Page_Login OutlookPageLogin;
-    private static Outlook_Page_Dashboard OutlookPageDashboard;
     private static ReportsUtils report;
     private static ScreenShotTaker capture;
     private static ExtentTest logger;
@@ -42,13 +43,12 @@ public class TestCase_Outlook_Login_Valid_On_Chrome extends BaseTest {
         //Create the ScreenShotTaker instance
         capture = new ScreenShotTaker();
         //Begin to log the report details
-        logger = report.testLogger("TestCase_Outlook_Login_Valid_On_Chrome");
+        logger = report.testLogger("TestCase_Outlook_Login_Invalid_On_Chrome");
         //initial LogUtilFunctions.class，set the system level info log configuration by create the class instance
         LogUtilFunctions logUtil = new LogUtilFunctions();
-        logUtil.setLoggerProperties("TestCase_Outlook_Login_Valid_On_Chrome", ProjectParams.getTestCase_Outlook_Login_Valid_On_Chrome_LayOut(), ProjectParams.getChromeDriverLocalPath());
+        logUtil.setLoggerProperties("TestCase_Outlook_Login_Invalid_On_Chrome", ProjectParams.getTestCase_Outlook_Login_Invalid_On_Chrome_LayOut(), ProjectParams.getChromeDriverLocalPath());
 
         OutlookPageLogin = new Outlook_Page_Login();
-        OutlookPageDashboard = new Outlook_Page_Dashboard();
 
         //Maximize the browser window
         OutlookPageLogin.MaxPageWindow(chromeDriver);
@@ -67,17 +67,18 @@ public class TestCase_Outlook_Login_Valid_On_Chrome extends BaseTest {
         logger.log(LogStatus.PASS, "Outlook Login Page Opened!");
         //Input the user name & pass to login
         OutlookPageLogin.cleanLoginPageInputTextArea(chromeDriver, testUtil);
-        OutlookPageLogin.Ipt_UserName.sendKeys(ProjectParams.getLoginUserName_Valid());
-        OutlookPageLogin.Ipt_PassWord.sendKeys(ProjectParams.getLoginUserPass_Valid());
+        OutlookPageLogin.Ipt_UserName.sendKeys(ProjectParams.getLoginUserName_Invalid());
+        OutlookPageLogin.Ipt_PassWord.sendKeys(ProjectParams.getLoginUserPass_Invalid());
         OutlookPageLogin.Btn_Login.click();
 
         //Action 2 : verify the login action
-        logger.log(LogStatus.INFO, "Login the Outlook Dashboard and prepare to grab target elements on the page.");
-        //Grab all target web elements on the page : Outlook_Page_Dashboard
-        OutlookPageDashboard.getOutlookPageDashboardElements(chromeDriver);
-        //Assert the page title == [Outlook.com - loginUser1]
-        Assert.assertTrue(OutlookPageDashboard.Txt_PageTitle.equals("Outlook.com - " + ProjectParams.getLoginUserName_Valid()));
-        logger.log(LogStatus.PASS, "Login Success! Outlook Dashboard Opened. TestAction_Login -> Finished!");
+        logger.log(LogStatus.INFO, "Login the Outlook Failed and prepare to grab target alert elements on the page.");
+        //Grab all target web elements on the page : Outlook.com
+        OutlookPageLogin.getOutlookPageLoginElements(chromeDriver);
+        //Assert the Popup alert errors
+        Assert.assertTrue(OutlookPageLogin.Txt_PopUserNameError.isDisplayed());
+        Assert.assertTrue(OutlookPageLogin.Txt_PopPassWordError.isDisplayed());
+        logger.log(LogStatus.FAIL, "Login Failed! Check the Login Username & Password. TestAction_Login -> Finished!");
 
     }
 

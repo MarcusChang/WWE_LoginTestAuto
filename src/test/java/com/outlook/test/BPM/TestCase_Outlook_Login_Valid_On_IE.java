@@ -69,8 +69,8 @@ public class TestCase_Outlook_Login_Valid_On_IE extends BaseTest {
         logger.log(LogStatus.PASS, "Outlook Login Page Opened!");
         //Input the user name & pass to login
         OutlookPageLogin.cleanLoginPageInputTextArea(ieDriver, testUtil);
-        OutlookPageLogin.Ipt_UserName.sendKeys(ProjectParams.getLoginUserName_1());
-        OutlookPageLogin.Ipt_PassWord.sendKeys(ProjectParams.getLoginUserPass_1());
+        OutlookPageLogin.Ipt_UserName.sendKeys(ProjectParams.getLoginUserName_Valid());
+        OutlookPageLogin.Ipt_PassWord.sendKeys(ProjectParams.getLoginUserPass_Valid());
         OutlookPageLogin.Btn_Login.click();
 
         //Action 2 : verify the login action
@@ -78,7 +78,7 @@ public class TestCase_Outlook_Login_Valid_On_IE extends BaseTest {
         //Grab all target web elements on the page : Outlook_Page_Dashboard
         OutlookPageDashboard.getOutlookPageDashboardElements(ieDriver);
         //Assert the page title == [Outlook.com - loginUser1]
-        Assert.assertTrue(OutlookPageDashboard.Txt_PageTitle.equals("Outlook.com - " + ProjectParams.getLoginUserName_1()));
+        Assert.assertTrue(OutlookPageDashboard.Txt_PageTitle.equals("Outlook.com - " + ProjectParams.getLoginUserName_Valid()));
         logger.log(LogStatus.PASS, "Login Success! Outlook Dashboard Opened. TestAction_Login -> Finished!");
 
     }

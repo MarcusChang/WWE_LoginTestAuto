@@ -61,26 +61,47 @@ public class ProjectParams implements ApplicationContextAware {
         return propertiesFactoryBean.get("OutlookURL").toString().trim();
     }
 
-    public static String getLoginUserName_1() {
-        return propertiesFactoryBean.get("LoginUserName_1").toString().trim();
+    public static String getLoginUserName_Valid() {
+        return propertiesFactoryBean.get("LoginUserName_Valid").toString().trim();
     }
 
-    public static String getLoginUserPass_1() {
-        return propertiesFactoryBean.get("LoginUserPass_1").toString().trim();
+    public static String getLoginUserPass_Valid() {
+        return propertiesFactoryBean.get("LoginUserPass_Valid").toString().trim();
+    }
+
+    public static String getLoginUserName_Invalid() {
+        return propertiesFactoryBean.get("LoginUserName_Invalid").toString().trim();
+    }
+
+    public static String getLoginUserPass_Invalid() {
+        return propertiesFactoryBean.get("LoginUserPass_Invalid").toString().trim();
     }
 
 
 
     public static String getTestCase_Outlook_Login_Valid_On_Chrome_LayOut() {
-        return propertiesFactoryBean.get("TestCase_CreateNewPage_QuickCreate_On_Chrome_LayOut").toString().trim();
+        return propertiesFactoryBean.get("TestCase_Outlook_Login_Valid_On_Chrome_LayOut").toString().trim();
     }
 
     public static String getTestCase_Outlook_Login_Valid_On_Firefox_LayOut() {
-        return propertiesFactoryBean.get("TestCase_CreateNewPage_QuickCreate_On_Firefox_LayOut").toString().trim();
+        return propertiesFactoryBean.get("TestCase_Outlook_Login_Valid_On_Firefox_LayOut").toString().trim();
     }
 
     public static String getTestCase_Outlook_Login_Valid_On_IE_LayOut() {
-        return propertiesFactoryBean.get("TestCase_CreateNewPage_QuickCreate_On_IE_LayOut").toString().trim();
+        return propertiesFactoryBean.get("TestCase_Outlook_Login_Valid_On_IE_LayOut").toString().trim();
+    }
+
+
+    public static String getTestCase_Outlook_Login_Invalid_On_Chrome_LayOut() {
+        return propertiesFactoryBean.get("TestCase_Outlook_Login_Invalid_On_Chrome_LayOut").toString().trim();
+    }
+
+    public static String getTestCase_Outlook_Login_Invalid_On_Firefox_LayOut() {
+        return propertiesFactoryBean.get("TestCase_Outlook_Login_Invalid_On_Firefox_LayOut").toString().trim();
+    }
+
+    public static String getTestCase_Outlook_Login_Invalid_On_IE_LayOut() {
+        return propertiesFactoryBean.get("TestCase_Outlook_Login_Invalid_On_IE_LayOut").toString().trim();
     }
 
 

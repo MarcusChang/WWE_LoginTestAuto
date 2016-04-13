@@ -13,13 +13,12 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 /**
- * Created by Marcus_Chang on 2016/4/13.
+ * Created by Marcus_Chang on 2016/4/14.
  */
-public class TestCase_Outlook_Login_Valid_On_Firefox extends BaseTest {
+public class TestCase_Outlook_Login_Invalid_On_Firefox extends BaseTest {
 
     private static WebDriver firefoxDriver;
     private static Outlook_Page_Login OutlookPageLogin;
-    private static Outlook_Page_Dashboard OutlookPageDashboard;
     private static ReportsUtils report;
     private static ScreenShotTaker capture;
     private static ExtentTest logger;
@@ -44,20 +43,19 @@ public class TestCase_Outlook_Login_Valid_On_Firefox extends BaseTest {
         //Create the ScreenShotTaker instance
         capture = new ScreenShotTaker();
         //Begin to log the report details
-        logger = report.testLogger("TestCase_Outlook_Login_Valid_On_Firefox");
+        logger = report.testLogger("TestCase_Outlook_Login_Invalid_On_Firefox");
         //initial LogUtilFunctions.class，set the system level info log configuration by create the class instance
         LogUtilFunctions logUtil = new LogUtilFunctions();
-        logUtil.setLoggerProperties("TestCase_Outlook_Login_Valid_On_Firefox", ProjectParams.getTestCase_Outlook_Login_Valid_On_Firefox_LayOut(), ProjectParams.getFireFoxDriverLocalPath());
+        logUtil.setLoggerProperties("TestCase_Outlook_Login_Invalid_On_Firefox", ProjectParams.getTestCase_Outlook_Login_Invalid_On_Firefox_LayOut(), ProjectParams.getFireFoxDriverLocalPath());
 
         OutlookPageLogin = new Outlook_Page_Login();
-        OutlookPageDashboard = new Outlook_Page_Dashboard();
 
         //Maximize the browser window
         OutlookPageLogin.MaxPageWindow(firefoxDriver);
     }
 
     @Test
-    public void TestAction_Outlook_Login_Valid_On_Firefox() {
+    public void TestAction_Outlook_Login_Invalid_On_Firefox() {
 
         //Action 1 : Open the Outlook login page
         logger.log(LogStatus.INFO, "Begin the test and open the test login page.");
@@ -69,17 +67,18 @@ public class TestCase_Outlook_Login_Valid_On_Firefox extends BaseTest {
         logger.log(LogStatus.PASS, "Outlook Login Page Opened!");
         //Input the user name & pass to login
         OutlookPageLogin.cleanLoginPageInputTextArea(firefoxDriver, testUtil);
-        OutlookPageLogin.Ipt_UserName.sendKeys(ProjectParams.getLoginUserName_Valid());
-        OutlookPageLogin.Ipt_PassWord.sendKeys(ProjectParams.getLoginUserPass_Valid());
+        OutlookPageLogin.Ipt_UserName.sendKeys(ProjectParams.getLoginUserName_Invalid());
+        OutlookPageLogin.Ipt_PassWord.sendKeys(ProjectParams.getLoginUserPass_Invalid());
         OutlookPageLogin.Btn_Login.click();
 
         //Action 2 : verify the login action
-        logger.log(LogStatus.INFO, "Login the Outlook Dashboard and prepare to grab target elements on the page.");
-        //Grab all target web elements on the page : Outlook_Page_Dashboard
-        OutlookPageDashboard.getOutlookPageDashboardElements(firefoxDriver);
-        //Assert the page title == [Outlook.com - loginUser1]
-        Assert.assertTrue(OutlookPageDashboard.Txt_PageTitle.equals("Outlook.com - " + ProjectParams.getLoginUserName_Valid()));
-        logger.log(LogStatus.PASS, "Login Success! Outlook Dashboard Opened. TestAction_Login -> Finished!");
+        logger.log(LogStatus.INFO, "Login the Outlook Failed and prepare to grab target alert elements on the page.");
+        //Grab all target web elements on the page : Outlook.com
+        OutlookPageLogin.getOutlookPageLoginElements(firefoxDriver);
+        //Assert the Popup alert errors
+        Assert.assertTrue(OutlookPageLogin.Txt_PopUserNameError.isDisplayed());
+        Assert.assertTrue(OutlookPageLogin.Txt_PopPassWordError.isDisplayed());
+        logger.log(LogStatus.FAIL, "Login Failed! Check the Login Username & Password. TestAction_Login -> Finished!");
 
     }
 

@@ -15,6 +15,7 @@ public class Outlook_Page_Login extends CommonPageModel {
     public WebElement Btn_Login;
     public WebElement Ckb_KeepMeLoggedIn;
     public WebElement Txt_PopUserNameError;
+    public WebElement Txt_PopPassWordError;
     public String Txt_PageTitle;
 
     public void getOutlookPageLoginElements(WebDriver driver) {
@@ -24,6 +25,7 @@ public class Outlook_Page_Login extends CommonPageModel {
         Btn_Login = getPageElementById(driver, By.id("idSIButton9"));
         Ckb_KeepMeLoggedIn = getPageElementById(driver, By.id("idChkBx_PWD_KMSI0Pwd"));
         Txt_PopUserNameError = getPageElementById(driver, By.id("usernameError"));
+        Txt_PopPassWordError = getPageElementById(driver, By.id("passwordError"));
         Txt_PageTitle = driver.getTitle();
 
     }
