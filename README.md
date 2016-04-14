@@ -97,69 +97,8 @@ you can change it on [resource.conf:testParams.properties].
 *****************************************************************************************************************************************
 
 
-Below is my test cases for the [sign in] feature of the outlook.com :
-
-- Test Case 1 : Input [Username = null] + [Password = null] Then [Press Submit Btn];
-EP : [id=usernameError] + [id=passwordError] Popup and requires user to input the valid [Username] + [Password].
-
-- Test Case 2 : Input [Username = Vaild Value] + [Password = null] Then [Press Submit Btn];
-EP : [id=passwordError] Popup and requires user to input the valid [Password].
-
-- Test Case 3 : Input [Username = null] + [Password = Valid Value] Then [Press Submit Btn];
-EP : [id=usernameError] Popup and requires user to input the valid [Username].
-
-- Test Case 4 : Input [Username = space * (required input length)] + [Password = space * (required input length)] Then [Press Submit Btn];
-EP : [id=usernameError] Popup and requires user to input the valid [Username].
-
-- Test Case 5 : Input [Username = space * 1 + Valid Value + space * 1] + [Password = Valid Value] Then [Press Submit Btn];
-EP : [id=usernameError] Popup and requires user to input the valid [Username].
-
-- Test Case 6 : Input [Username = Valid Value] + [Password = space * 1 + Valid Value + space * 1] Then [Press Submit Btn];
-EP : [id=passwordError] Popup and requires user to input the valid [Password].
-
-- Test Case 7 : Input [Username = admin/Admin/ADMIN] + [Password = admin/Admin/ADMIN] Then [Press Submit Btn];
-EP : [id=usernameError] + [id=passwordError] Popup and requires user to input the valid [Username] + [Password].
-
-- Test Case 8 : Input [Username = Long String] + [Password = Valid Value] Then [Press Submit Btn];
-EP : [id=usernameError] Popup and requires user to input the valid [Username].
-
-- Test Case 9 : Input [Username = Valid Value] + [Password = Long String] Then [Press Submit Btn];
-EP : [id=passwordError] Popup and requires user to input the valid [Password].
-
-- Test Case 10 : Input [Username = multibyte character] + [Password = Valid Value] Then [Press Submit Btn];
-EP : [id=usernameError] Popup and requires user to input the valid [Username].
-
-- Test Case 11 : Input [Username = Valid Value] + [Password = multibyte character] Then [Press Submit Btn];
-EP : [id=passwordError] Popup and requires user to input the valid [Password].
-
-- Test Case 12 : Input [Username = Valid Value with Special Symbol( not include : space|(|)|[|]|.|-|#|*|/)] + [Password = Valid Value] Then [Press Submit Btn];
-EP : [id=usernameError] Popup and requires user to input the valid [Username].
-
-- Test Case 13 : Input [Username = Valid Value(like phone number) + Special Symbol(space|(|)|[|]|.|-|#|*|/)] + [Password = Valid Value] Then [Press Submit Btn];
-EP : Login Success.
-
-- Test Case 14 : Input [Username = JS code for XSS] + [Password = JS code for XSS] Then [Press Submit Btn];
-EP : [id=usernameError] + [id=passwordError] Popup and requires user to input the valid [Username] + [Password].
-
-- Test Case 15 : Input [Username = SQL for Injection] + [Password = SQL for Injection] Then [Press Submit Btn];
-EP : [id=usernameError] + [id=passwordError] Popup and requires user to input the valid [Username] + [Password].
-
-- Test Case 16 : Use the valid Username & Password to login the test account on multiple host with different ip address;
-EP : Security Alert Message should Popup on all hosts.
-
-- Test Case 17 : Use the valid Username & Password to login the test account on multiple browsers by the same ip address;
-EP : Login Success.
-
-- Test Case 18 : Use the valid Username & Password to login the test account on Outlook.com;
-Then logout the test account and try to press the [backward] & [forward] buttons on the browser;
-EP : User can't login the test account again.
-
-- Test Case 19 : Use the valid Username & Password to login the test account on Outlook.com;
-Then delete the Cookies for the Outlook.com and continue operate on the mailbox;
-EP : After the Cookies have been deleted, when the user operate anything on the mailbox, there will be a refresh action to logout the user.
-
-- Test Case 20 : Use Jmeter/Gatling/LoadRunner/BlazeMeter to generate the valid login stress to test the load performance of Outlook.com;
-EP : It's should be fine as the Microsoft has the CDN and Cloud to elastic the service.
+For Test Plan and Test Cases for the [sign in] feature of the outlook.com :
+- You can find them in the \WWE_LoginTestAuto\TestPlanAndTestDesign.
 
 
 One last thing !
